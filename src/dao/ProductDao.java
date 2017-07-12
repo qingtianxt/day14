@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
@@ -66,9 +67,28 @@ public class ProductDao {
 	public void deleteProductById(String pid) throws SQLException {
 		QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
 		
-		String sql = "delete from product where pid =?";
+		String sql = "delete from product where 1=1";
 		qr.update(sql,pid);
 		
+	}
+	public List<Product> findProductByCondition(String name, String kw) throws SQLException {
+		QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
+		
+		String sql = "select * from product where 1=1";
+		
+		List<String> params = new ArrayList<>();
+		//判断参数是否为空，拼接sql
+		
+		if(name!=null && name.trim().length()>0){
+			sql+=(" and pname like ?");
+			params.add("%"+name+"%");
+		}
+		if(kw!=null && kw.trim().length()>0){
+			sql+=(" and pdesc like ?");
+			params.add("%"+kw+"%");
+		}
+		
+		return qr.query(sql, new BeanListHandler<>(Product.class),params.toArray());
 	}
 
 }

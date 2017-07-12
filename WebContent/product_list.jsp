@@ -10,8 +10,13 @@
 <body>
 	<table border="1" align="center" width="88%">
 		<tr>
-			<td colspan="6"></td>
-			<td colspan="2"><input type="button" value="删除选中"
+			<td colspan="7">
+				<form action="${pageContext.request.contextPath }/findProductByCondition">
+					商品名称<input name="name">&nbsp;&nbsp;&nbsp;&nbsp;关键词<input name="kw">&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="submit" value="查询">
+				</form>
+			</td>
+			<td colspan="1"><input type="button" value="删除选中"
 				onclick="delCheck()"></td>
 		</tr>
 		<tr>

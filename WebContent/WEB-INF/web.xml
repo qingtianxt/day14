@@ -69,4 +69,14 @@
     <servlet-name>DelCheckedProductServlet</servlet-name>
     <url-pattern>/delCheckedProduct</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FfindProductByConditionServlet</display-name>
+    <servlet-name>FfindProductByConditionServlet</servlet-name>
+    <servlet-class>servlet.FfindProductByConditionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FfindProductByConditionServlet</servlet-name>
+    <url-pattern>/findProductByCondition</url-pattern>
+  </servlet-mapping>
 </web-app>

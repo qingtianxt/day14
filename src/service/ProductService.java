@@ -61,5 +61,16 @@ public class ProductService {
 			pdao.deleteProductById(pid);
 		}
 	}
+	/**
+	 * 多条件查询
+	 * @param name 商品名称
+	 * @param kw 关键词
+	 * @return
+	 * @throws SQLException 
+	 */
+	public List<Product> findProductByCondition(String name, String kw) throws SQLException {
+		
+		return new ProductDao().findProductByCondition(name,kw);
+	}
 
 }
