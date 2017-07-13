@@ -79,4 +79,14 @@
     <servlet-name>FfindProductByConditionServlet</servlet-name>
     <url-pattern>/findProductByCondition</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowProductByPageServlet</display-name>
+    <servlet-name>ShowProductByPageServlet</servlet-name>
+    <servlet-class>servlet.ShowProductByPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowProductByPageServlet</servlet-name>
+    <url-pattern>/showProductByPage</url-pattern>
+  </servlet-mapping>
 </web-app>

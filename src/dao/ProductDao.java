@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import domain.Product;
 import utils.DataSourceUtils;
@@ -89,6 +90,19 @@ public class ProductDao {
 		}
 		
 		return qr.query(sql, new BeanListHandler<>(Product.class),params.toArray());
+	}
+	public List<Product> findProductByCondition(int currPage, int pageSize) throws SQLException {
+		QueryRunner qr = new QueryRunner(DataSourceUtils.getDataSource());
+		
+		String sql = "select * from product limit ?,?";
+		
+		return qr.query(sql, new BeanListHandler<>(Product.class),(currPage-1)*pageSize,pageSize);
+	}
+	public int getCount() throws SQLException {
+		QueryRunner qr= new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "select count(*) from product";		
+		
+	return ((Long)qr.query(sql, new ScalarHandler())).intValue();
 	}
 
 }
